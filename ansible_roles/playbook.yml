@@ -1,0 +1,20 @@
+---
+
+- name: ec2 Launch
+  hosts: all
+  user: centos
+  become: true
+  gather_facts: no
+  roles: 
+    - ec2_launch
+
+- name: ec2 Config
+  hosts: ec2_hosts
+  user: centos
+  become: true
+  gather_facts: no
+  roles: 
+    - ec2_config
+
+
+ 

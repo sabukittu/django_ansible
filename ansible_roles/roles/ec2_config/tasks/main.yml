@@ -1,0 +1,35 @@
+---
+# tasks file for roles/ec2_config
+
+- name: Add Epel Repository
+  yum:
+    name: 
+      - epel-release
+      - awscli  
+    state: present
+
+- name: Download Script from S3
+  shell: aws s3 cp s3://django-project-esskay /tmp --recursive --region ap-south-1
+
+- name: Installation of Packages Python & Apache
+  yum:
+    name:
+      - unzip
+      - httpd
+      - httpd-devel
+      - gcc
+      - python36-pip
+      - python36-devel
+      - python36
+    state: present
+
+- name: Service Restart
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+
+- name: Executing Django Script
+  shell: bash /tmp/django_script.sh
+
+
