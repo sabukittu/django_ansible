@@ -2,7 +2,7 @@
 
 ###### Ansible deployment of EC2 instance node with Django demo environment ###### 
 
-
+##
 ## Clone the repository to your machine.
 
 ## To Execute this playbook you need a EC2 Instance with Ansible, boto, boto3, python3, pip3 installed in it .
